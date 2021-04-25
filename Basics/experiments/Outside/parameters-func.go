@@ -5,57 +5,44 @@ import (
 	"math"
 )
 
-const Pi = 3.14
 const half = 0.5
 
-func square(a int) (area, perimeter int) {
-	area = a * a
-	fmt.Println("Area of square", area)
-	perimeter = 4 * a
-	fmt.Println("Perimeter of Square", perimeter)
-	fmt.Println(".......................................................................")
-	return
+func square(side int) (area, perimeter int) {
+	area = side * side
+	perimeter = 4 * side
+	return // Naked return
 }
 
 func rectangle(l, b int) (area, perimeter int) {
-	area = l * b
-	fmt.Println("Area of rectangle", area)
-	perimeter = 2 * (l + b)
-	fmt.Println("Perimeter of rectangle", perimeter)
+	fmt.Printf("RECTANGLE :::: LENGTH : %v | BREATH : %v | AREA: %v | PERIMETER : %v \n", l, b, l*b, 2*(l+b))
 	fmt.Println(".......................................................................")
 	return
 }
 func iso_triangle(h, b float64) (area, perimeter float64) {
-	area = half * h * b
-	fmt.Println("Area of isos_Traingle", area)
-	perimeter = 2*h + b
-	fmt.Println("Perimeter of iso _triangle", perimeter)
+	fmt.Printf("ISO_TRIANGLE :::: HEIGHT :%v | BREATH :%v | AREA: %v | PERIMETER : %v \n ", h, b, half*h*b, 2*h+b)
 	fmt.Println(".......................................................................")
 	return
 }
 func circle(r float64) (area, perimeter float64) {
-	area = Pi * r * r //constant
-	fmt.Println("Area of circle", area)
-	perimeter = 2 * Pi * r
-	fmt.Println("Perimeter of circle", perimeter)
+	fmt.Printf("CIRCLE ::::RADUIS:%v | AREA: %v | PERIMETER : %v \n  ", r, math.Pi*r*r, 2*math.Pi*r)
 	fmt.Println(".......................................................................")
 	return
 }
 
 func scalene_traingle(a, b, c float64) (s, area, perimeter float64) {
-	s = (a + b + c) / 2
-	area = math.Sqrt(s * (s - a) * (s - b) * (s - c))
-	fmt.Println("Area of scalene_triangle", area)
-	perimeter = a + b + c
-	fmt.Println("Perimeter of scalene_triangle", perimeter)
+	fmt.Printf("SCALENE_TRIANGLE :::: 1st side : %v | 2nd side : %v | 3rd side: %v | SEMI_PERIMETER : %v| AREA: %v | PERIMETER : %v \n ", a, b, c, (a+b+c)/2, math.Sqrt(s*(s-a)*(s-b)*(s-c)), a+b+c)
 	fmt.Println(".......................................................................")
 	return
 }
 
 func main() {
-	square(4)
+	side := 6
+	area, perimeter := square(side)
+	fmt.Printf("Side: %v | Area: %v | Perimeter: %v\n", side, area, perimeter)
+	fmt.Println(".......................................................................")
+
 	rectangle(5, 6)
 	circle(5)
 	iso_triangle(4, 5)
-	scalene_traingle(4, 3, 3)
+	scalene_traingle(91, 55, 45)
 }
